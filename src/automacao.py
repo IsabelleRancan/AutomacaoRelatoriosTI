@@ -20,8 +20,20 @@ def selecionar_intervalo(intervalo):
     pyautogui.press("enter")
     time.sleep(1)
 
-    # Auto ajuste
-    pyautogui.hotkey("alt", "c", "o", "t")
+
+def ajustar_colunas():
+
+    # Executa os atalhos do Excel em sequência
+    pyautogui.press("alt")
+    time.sleep(0.5)
+
+    pyautogui.press("c")
+    time.sleep(0.5)
+
+    pyautogui.press("o")
+    time.sleep(0.5)
+
+    pyautogui.press("t")
     time.sleep(2)
 
 
@@ -37,6 +49,9 @@ def criar_grafico(intervalo):
     # Confirma a criação da tabela
     pyautogui.press("enter")
     time.sleep(2)
+
+    # Ajusta a largura das colunas
+    ajustar_colunas()
 
     # Cria o gráfico
     pyautogui.hotkey("alt", "f1")
@@ -63,9 +78,8 @@ def formatar_relatorio():
         pyautogui.press("enter")
         time.sleep(2)
 
-        # Auto ajuste
-        pyautogui.hotkey("alt", "c", "o", "t")
-        time.sleep(2)
+        # Ajusta a largura das colunas
+        ajustar_colunas()
 
         # Salva o relatório
         pyautogui.hotkey("ctrl", "b")
@@ -77,7 +91,6 @@ def formatar_relatorio():
     except Exception as erro:
         print(f"Erro ao formatar o relatório: {erro}")
         return False
-
 
 
 def abrir_arquivo(caminho_arquivo, intervalo_grafico):
